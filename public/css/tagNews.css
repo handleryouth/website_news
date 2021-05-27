@@ -1,0 +1,55 @@
+.form-filter {
+  display: flex;
+  justify-content:center;
+  margin-top: 5rem;
+}
+
+.left, .middle{
+  margin-right:2rem;
+}
+
+.left{
+  display: flex;
+}
+
+.middle{
+  display: flex;
+  align-items:center;
+}
+
+
+.news-item{
+  text-align:center;
+  width:100%;
+  margin:5rem 0;
+}
+
+.header-news{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.description-news{
+  width:50%;
+  margin:0 auto;
+}
+
+.image-news{
+  width:50%;
+}
+
+
+
+/*tech form*/
+.techNews-Form{
+  display:flex;
+  justify-content: center;
+  margin: 3rem 0;
+  align-items:center;
+}
+
+.tech-submit{
+  margin-left: 2rem;
+}
+
+/*tech form*/

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.83.1">
+  <link rel="stylesheet" href="css/tagNews.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <title>Bitcoin News!</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <!-- Favicons -->
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+  <%- include('header'); -%>
+  <form action="/bitcoinNews" method="post">
+    <%- include('form'); -%>
+  </form>
+
+
+
+  <div class="container">
+
+    <% if( customBitcoinHeader[0] === "Sorry Not Found Anything. Try Another"){ %>
+    <div class="news-item">
+      <h1 class="header-news">Sorry Not Found Anything. Try Another</h1>
+    </div>
+    <%} else { %>
+    <% for(var i = 0; i < customBitcoinHeader.length; i++) { %>
+    <div class="news-item">
+      <h1 class="header-news"><%= customBitcoinHeader[i] %></h1>
+      <p class="description-news"><%= customBitcoinDescription[i] %></p>
+      <img class="image-news" src=<%= customBitcoinImages[i] %> alt="Illustration image">
+    </div>
+    <% } %>
+    <% } %>
+
+  </div>
+
+
+</body>
+
+<%- include("footer") -%>
