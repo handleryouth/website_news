@@ -64,11 +64,50 @@ html {
   background-color: hsla(250, 44%, 26%, 0.32);
 }
 
-
-
 /*country choice*/
 .country-choice{
   text-align: center;
 }
 
 /*country choice*/
+
+
+@media all and (max-width :1440px){
+    .carousel-caption{
+      text-align: center !important;
+    }
+
+  .carousel-title-header{
+    font-size: 1.2rem;
+  }
+
+  .carousel-title-description{
+    font-size: 0.8rem;
+  }
+
+
+  .marketing-header{
+    font-size: 1.5rem;
+  }
+
+  .header-news{
+    font-size: 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .description-news {
+    margin: 1rem auto;
+    font-size: 0.9rem;
+  }
+
+  .news-description{
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0 !important;
+  }
+
+  .marketing a{
+    font-size:1rem;
+  }
+}
