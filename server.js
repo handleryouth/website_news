@@ -9,6 +9,7 @@ const getBitcoinNews =  require(__dirname + "/bitcoin.js");
 const getTechNews = require(__dirname + "/tech.js");
 const getCountryNews = require(__dirname + "/nations.js");
 
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/public'));
@@ -16,7 +17,18 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.engine('html', require("ejs").renderFile);
 
-app.get("/", function(req, res){
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + "/login.html");
+});
+
+
+app.post('/', function(req, res){
+  res.redirect("/home");
+});
+
+
+app.get("/home", function(req, res){
   getNews.add(req, res);
 });
 

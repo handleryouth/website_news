@@ -48,7 +48,7 @@ const urlbasedCategory = "https://newsapi.org/v2/top-headlines?country=us&apiKey
 
 /*top news*/
 module.exports.add =
-  function(req, res) {
+  async function(req, res) {
     https.get(urlTopNews, function(response) {
       let chunks = "";
       response.on('data', function(data) {
