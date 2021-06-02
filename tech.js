@@ -78,7 +78,7 @@ module.exports.getTech =
             techDescription: techDescriptionList,
             techImages: techImagesList
           });
-        }, 2000);
+        }, 10000);
 
 
       });
@@ -138,7 +138,7 @@ module.exports.getTechCustom = function(req, res, preferSort) {
           customTechDescription: customDescriptionList,
           customTechImages: customImagesList
         });
-      }, 2000);
+      }, 10000);
 
 
     });
