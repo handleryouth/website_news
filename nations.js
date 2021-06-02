@@ -33,11 +33,16 @@ module.exports.getCountry =
           sourceDescriptionList.push(sourceDescription);
           sourceLinkList.push(sourceLink);
         }
-        res.render("nations.ejs", {
-          srcName: sourceHeaderList,
-          srcDescription: sourceDescriptionList,
-          srcLink: sourceLinkList
-        });
+
+        setTimeout(function afterTwoSeconds() {
+          res.render("nations.ejs", {
+            srcName: sourceHeaderList,
+            srcDescription: sourceDescriptionList,
+            srcLink: sourceLinkList
+          });
+        }, 10000);
+
+
       });
     });
 
@@ -49,7 +54,7 @@ module.exports.getCountry =
 module.exports.getCustomCountry =
   function(req, res, preferCountry) {
 
-    if(preferCountry === undefined || preferCountry === ""){
+    if (preferCountry === undefined || preferCountry === "") {
       preferCountry = "us";
     }
 
@@ -68,17 +73,21 @@ module.exports.getCustomCountry =
 
       response.on("end", function() {
         let News = JSON.parse(chunks);
-        if(News.sources.length === 0){
+        if (News.sources.length === 0) {
           sourceHeaderList.push("Sorry not any header !");
           sourceDescriptionList.push("Sorry not found any description !");
 
-          res.render("nationsFilter.ejs", {
-            customsrcName: sourceHeaderList,
-            customsrcDescription: sourceDescriptionList,
-            customsrcLink: sourceLinkList
-          });
-        }
-        else if(News.sources.length < 10 && News.sources.length >= 1){
+
+          setTimeout(function afterTwoSeconds() {
+            res.render("nationsFilter.ejs", {
+              customsrcName: sourceHeaderList,
+              customsrcDescription: sourceDescriptionList,
+              customsrcLink: sourceLinkList
+            });
+          }, 10000);
+
+
+        } else if (News.sources.length < 10 && News.sources.length >= 1) {
           for (let i = 0; i < News.sources.length; i++) {
             let sourceName = News.sources[i].name;
             let sourceDescription = News.sources[i].description;
@@ -88,15 +97,16 @@ module.exports.getCustomCountry =
             sourceLinkList.push(sourceLink);
           }
 
-          res.render("nationsFilter.ejs", {
-            customsrcName: sourceHeaderList,
-            customsrcDescription: sourceDescriptionList,
-            customsrcLink: sourceLinkList
-          });
-        }
+          setTimeout(function() {
+            res.render("nationsFilter.ejs", {
+              customsrcName: sourceHeaderList,
+              customsrcDescription: sourceDescriptionList,
+              customsrcLink: sourceLinkList
+            });
+          }, 2000);
 
 
-        else{
+        } else {
           for (let i = 0; i < 10; i++) {
             console.log(News.sources[0].name);
             let sourceName = News.sources[i].name;
@@ -107,11 +117,15 @@ module.exports.getCustomCountry =
             sourceLinkList.push(sourceLink);
           }
 
-          res.render("nationsFilter.ejs", {
-            customsrcName: sourceHeaderList,
-            customsrcDescription: sourceDescriptionList,
-            customsrcLink: sourceLinkList
-          });
+
+          setTimeout(function() {
+            res.render("nationsFilter.ejs", {
+              customsrcName: sourceHeaderList,
+              customsrcDescription: sourceDescriptionList,
+              customsrcLink: sourceLinkList
+            });
+          }, 10000);
+
         }
 
       });

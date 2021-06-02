@@ -50,7 +50,7 @@ module.exports.getApple = function(req, res) {
 
     response.on("end", function() {
       let News = JSON.parse(chunks);
-      if(News.totalResults < 10){
+      if (News.totalResults < 10) {
         for (let i = 0; i < News.totalResults; i++) {
           let appleNewsHeader = News.articles[i].title;
           let appleNewsDescription = News.articles[i].description;
@@ -59,8 +59,7 @@ module.exports.getApple = function(req, res) {
           appleDescriptionList.push(appleNewsDescription);
           appleImagesList.push(appleNewsImage);
         }
-      }
-      else{
+      } else {
         for (let i = 0; i < 10; i++) {
           let appleNewsHeader = News.articles[i].title;
           let appleNewsDescription = News.articles[i].description;
@@ -70,37 +69,43 @@ module.exports.getApple = function(req, res) {
           appleImagesList.push(appleNewsImage);
         }
       }
-      res.render("apple.ejs", {
-        appleHeader: appleHeaderList,
-        appleDescription: appleDescriptionList,
-        appleImages: appleImagesList
-      });
+
+
+      setTimeout(function() {
+        res.render("apple.ejs", {
+          appleHeader: appleHeaderList,
+          appleDescription: appleDescriptionList,
+          appleImages: appleImagesList
+        });
+      }, 10000);
+
+
     });
   });
 
 
 };
 
-module.exports.getAppleCustom = function(req, res, preferLanguage,preferDateFrom, preferDateto, preferSort) {
+module.exports.getAppleCustom = function(req, res, preferLanguage, preferDateFrom, preferDateto, preferSort) {
 
   console.log(preferLanguage);
-  if (preferLanguage === undefined || preferLanguage === ""){
+  if (preferLanguage === undefined || preferLanguage === "") {
     preferLanguage = "en";
   }
 
   console.log(preferDateFrom);
-  if (preferDateFrom === undefined || preferDateFrom === ""){
+  if (preferDateFrom === undefined || preferDateFrom === "") {
     preferDateFrom = from;
   }
 
   console.log(preferDateto);
-  if (preferDateto === undefined || preferDateto === ""){
+  if (preferDateto === undefined || preferDateto === "") {
     preferDateto = to;
   }
 
 
   console.log(preferSort);
-  if (preferSort === undefined || preferSort === ""){
+  if (preferSort === undefined || preferSort === "") {
     preferSort = "popularity";
   }
 
@@ -108,7 +113,7 @@ module.exports.getAppleCustom = function(req, res, preferLanguage,preferDateFrom
   console.log(customAppleURL);
   var customHeaderList = [];
   var customDescriptionList = [];
-  var customImagesList =  [];
+  var customImagesList = [];
 
   https.get(customAppleURL, function(response) {
     let chunks = "";
@@ -118,7 +123,7 @@ module.exports.getAppleCustom = function(req, res, preferLanguage,preferDateFrom
 
     response.on("end", function() {
       let News = JSON.parse(chunks);
-      if(News.totalResults < 10){
+      if (News.totalResults < 10) {
         for (let i = 0; i < News.totalResults; i++) {
           let appleNewsHeader = News.articles[i].title;
           let appleNewsDescription = News.articles[i].description;
@@ -127,11 +132,9 @@ module.exports.getAppleCustom = function(req, res, preferLanguage,preferDateFrom
           customDescriptionList.push(appleNewsDescription);
           customImagesList.push(appleNewsImage);
         }
-      }
-      else if (News.totalResults === 0){
+      } else if (News.totalResults === 0) {
         customHeaderList.push("Sorry not found anything !");
-      }
-      else{
+      } else {
         for (let i = 0; i < 10; i++) {
           let appleNewsHeader = News.articles[i].title;
           let appleNewsDescription = News.articles[i].description;
@@ -142,11 +145,16 @@ module.exports.getAppleCustom = function(req, res, preferLanguage,preferDateFrom
         }
       }
       console.log(customHeaderList.length);
-      res.render("appleFilter.ejs", {
-        customappleHeader: customHeaderList,
-        customappleDescription: customDescriptionList,
-        customappleImages: customImagesList
-      });
+
+      setTimeout(function() {
+        res.render("appleFilter.ejs", {
+          customappleHeader: customHeaderList,
+          customappleDescription: customDescriptionList,
+          customappleImages: customImagesList
+        });
+      }, 10000);
+
+
     });
   });
 

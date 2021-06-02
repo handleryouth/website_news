@@ -73,11 +73,16 @@ module.exports.getBitcoin =
           }
         }
 
-        res.render("bitcoin.ejs", {
-          bitcoinHeader: bitcoinHeaderList,
-          bitcoinDescription: bitcoinDescriptionList,
-          bitcoinImages: bitcoinImagesList
-        });
+
+
+        setTimeout(function() {
+          res.render("bitcoin.ejs", {
+            bitcoinHeader: bitcoinHeaderList,
+            bitcoinDescription: bitcoinDescriptionList,
+            bitcoinImages: bitcoinImagesList
+          });
+        }, 10000);
+
 
       });
     });
@@ -126,12 +131,10 @@ module.exports.getCustomBitcoin = function(req, res, preferLanguage, preferDateF
           customDescriptionList.push(bitcoinNewsDescription);
           customImagesList.push(bitcoinNewsImage);
         }
-      }
-      else if (News.totalResults === 0) {
+      } else if (News.totalResults === 0) {
         customHeaderList.push("Sorry Not Found Anything. Try Another");
         console.log(News);
-      }
-      else {
+      } else {
         for (let i = 0; i < 10; i++) {
           let bitcoinNewsHeader = News.articles[i].title;
           let bitcoinNewsDescription = News.articles[i].description;
@@ -141,11 +144,17 @@ module.exports.getCustomBitcoin = function(req, res, preferLanguage, preferDateF
           customImagesList.push(bitcoinNewsImage);
         }
       }
-      res.render("bitcoinFilter.ejs", {
-        customBitcoinHeader: customHeaderList,
-        customBitcoinDescription: customDescriptionList,
-        customBitcoinImages: customImagesList
-      });
+
+
+      setTimeout(function() {
+        res.render("bitcoinFilter.ejs", {
+          customBitcoinHeader: customHeaderList,
+          customBitcoinDescription: customDescriptionList,
+          customBitcoinImages: customImagesList
+        });
+      }, 10000);
+
+
 
     });
   });

@@ -8,6 +8,7 @@ const getAppleNews = require(__dirname + "/apple.js");
 const getBitcoinNews =  require(__dirname + "/bitcoin.js");
 const getTechNews = require(__dirname + "/tech.js");
 const getCountryNews = require(__dirname + "/nations.js");
+const searchNews = require(__dirname + "/search.js");
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,6 +26,12 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   res.redirect("/home");
+});
+
+
+app.post('/searchNews', function(req,res){
+  let query = req.body.queryInput;
+  searchNews.customSearch(req, res, query);
 });
 
 

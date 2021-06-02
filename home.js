@@ -233,39 +233,41 @@ https.get(urlbasedCategory + "technology", function(response) {
 /*news based on tech*/
 
 
+setTimeout(function afterTwoSeconds() {
+  res.render("index1", {
+    headerList: topNewsHeaderList,
+    descriptionList: topNewsDescriptionList,
+    imagesList: topNewsImagesList,
 
-    res.render("index1", {
-      headerList: topNewsHeaderList,
-      descriptionList: topNewsDescriptionList,
-      imagesList: topNewsImagesList,
+    anotherHead: anotherNewsHeader,
+    anotherDesc: anotherNewsDescription,
+    anotherImg: anotherNewsImages,
 
-      anotherHead: anotherNewsHeader,
-      anotherDesc: anotherNewsDescription,
-      anotherImg: anotherNewsImages,
+    businessHead: businessNewsHeader,
+    businessDescription: businessNewsDescription,
+    businessImages: businessNewsImages,
 
-      businessHead: businessNewsHeader,
-      businessDescription: businessNewsDescription,
-      businessImages: businessNewsImages,
+    entertainmentHead : entertainmentNewsHeader,
+    entertainmentDescription: entertainmentNewsDescription,
+    entertainmentImages: entertainmentNewsImages,
 
-      entertainmentHead : entertainmentNewsHeader,
-      entertainmentDescription: entertainmentNewsDescription,
-      entertainmentImages: entertainmentNewsImages,
+    healthHead: healthNewsHeader,
+    healthDescription: healthNewsDescription,
+    healthImages: healthNewsImages,
 
-      healthHead: healthNewsHeader,
-      healthDescription: healthNewsDescription,
-      healthImages: healthNewsImages,
+    scienceHead: scienceNewsHeader,
+    scienceDescription: scienceNewsDescription,
+    scienceImages: scienceNewsImages,
 
-      scienceHead: scienceNewsHeader,
-      scienceDescription: scienceNewsDescription,
-      scienceImages: scienceNewsImages,
+    sportHead: sportNewsHeader,
+    sportDescription: sportNewsDescription,
+    sportImages: sportNewsImages,
 
-      sportHead: sportNewsHeader,
-      sportDescription: sportNewsDescription,
-      sportImages: sportNewsImages,
+    technologyHead: technologyNewsHeader,
+    technologyDescription: technologyNewsDescription,
+    technologyImages: technologyNewsImages,
 
-      technologyHead: technologyNewsHeader,
-      technologyDescription: technologyNewsDescription,
-      technologyImages: technologyNewsImages,
+  });
+}, 10000);
 
-    });
   };

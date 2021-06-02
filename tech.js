@@ -36,7 +36,7 @@ var language = "en";
 
 /*languange*/
 
-var techURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&from=" + from.toString() + "&to=" + to.toString() + "&sortBy=" + defaultSort + "&language=" + language +"&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+var techURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&from=" + from.toString() + "&to=" + to.toString() + "&sortBy=" + defaultSort + "&language=" + language + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
 
 module.exports.getTech =
   function(req, res) {
@@ -50,7 +50,7 @@ module.exports.getTech =
 
       response.on("end", function() {
         let News = JSON.parse(chunks);
-        if(News.totalResults < 10){
+        if (News.totalResults < 10) {
           for (let i = 0; i < News.totalResults; i++) {
             let techNewsHeader = News.articles[i].title;
             let techNewsDescription = News.articles[i].description;
@@ -59,11 +59,9 @@ module.exports.getTech =
             techDescriptionList.push(techNewsDescription);
             techImagesList.push(techNewsImage);
           }
-        }
-        else if(News.totalResults === 0){
+        } else if (News.totalResults === 0) {
           techHeaderList.push("Sorry, not found anything!");
-        }
-        else{
+        } else {
           for (let i = 0; i < 10; i++) {
             let techNewsHeader = News.articles[i].title;
             let techNewsDescription = News.articles[i].description;
@@ -73,11 +71,16 @@ module.exports.getTech =
             techImagesList.push(techNewsImage);
           }
         }
-        res.render("tech.ejs", {
-          techHeader: techHeaderList,
-          techDescription: techDescriptionList,
-          techImages: techImagesList
-        });
+
+        setTimeout(function() {
+          res.render("tech.ejs", {
+            techHeader: techHeaderList,
+            techDescription: techDescriptionList,
+            techImages: techImagesList
+          });
+        }, 2000);
+
+
       });
     });
 
@@ -85,57 +88,60 @@ module.exports.getTech =
   };
 
 
-  module.exports.getTechCustom = function(req, res, preferSort) {
+module.exports.getTechCustom = function(req, res, preferSort) {
 
-    if (preferSort === undefined || preferSort === ""){
-      preferSort = "popularity";
-    }
+  if (preferSort === undefined || preferSort === "") {
+    preferSort = "popularity";
+  }
 
-    let customTechURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&sortBy=" + preferSort + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+  let customTechURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&sortBy=" + preferSort + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
 
-    console.log(customTechURL);
-    var customHeaderList = [];
-    var customDescriptionList = [];
-    var customImagesList =  [];
+  console.log(customTechURL);
+  var customHeaderList = [];
+  var customDescriptionList = [];
+  var customImagesList = [];
 
-    https.get(customTechURL, function(response) {
-      let chunks = "";
-      response.on('data', function(data) {
-        chunks += data;
-      });
+  https.get(customTechURL, function(response) {
+    let chunks = "";
+    response.on('data', function(data) {
+      chunks += data;
+    });
 
-      response.on("end", function() {
-        let News = JSON.parse(chunks);
-        if(News.totalResults < 10){
-          for (let i = 0; i < News.totalResults; i++) {
-            let techNewsHeader = News.articles[i].title;
-            let techNewsDescription = News.articles[i].description;
-            let techNewsImage = News.articles[i].urlToImage;
-            customHeaderList.push(techNewsHeader);
-            customDescriptionList.push(techNewsDescription);
-            customImagesList.push(techNewsImage);
-          }
+    response.on("end", function() {
+      let News = JSON.parse(chunks);
+      if (News.totalResults < 10) {
+        for (let i = 0; i < News.totalResults; i++) {
+          let techNewsHeader = News.articles[i].title;
+          let techNewsDescription = News.articles[i].description;
+          let techNewsImage = News.articles[i].urlToImage;
+          customHeaderList.push(techNewsHeader);
+          customDescriptionList.push(techNewsDescription);
+          customImagesList.push(techNewsImage);
         }
-        else if(News.totalResults === 0){
-          customHeaderList.push("Sorry, not found anything!");
+      } else if (News.totalResults === 0) {
+        customHeaderList.push("Sorry, not found anything!");
+      } else {
+        for (let i = 0; i < 10; i++) {
+          let techNewsHeader = News.articles[i].title;
+          let techNewsDescription = News.articles[i].description;
+          let techNewsImage = News.articles[i].urlToImage;
+          customHeaderList.push(techNewsHeader);
+          customDescriptionList.push(techNewsDescription);
+          customImagesList.push(techNewsImage);
         }
-        else{
-          for (let i = 0; i < 10; i++) {
-            let techNewsHeader = News.articles[i].title;
-            let techNewsDescription = News.articles[i].description;
-            let techNewsImage = News.articles[i].urlToImage;
-            customHeaderList.push(techNewsHeader);
-            customDescriptionList.push(techNewsDescription);
-            customImagesList.push(techNewsImage);
-          }
-        }
+      }
 
+
+      setTimeout(function() {
         res.render("techFilter.ejs", {
           customTechHeader: customHeaderList,
           customTechDescription: customDescriptionList,
           customTechImages: customImagesList
         });
-      });
-    });
+      }, 2000);
 
-  };
+
+    });
+  });
+
+};
