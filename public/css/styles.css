@@ -9,6 +9,7 @@ html {
   align-items:center;
   flex-direction:column;
   height: 53rem;
+  text-align:center;
 }
 
 
@@ -110,4 +111,8 @@ html {
   .marketing a{
     font-size:1rem;
   }
+}
+
+@media all and (max-width:575px){
+
 }

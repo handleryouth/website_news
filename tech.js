@@ -36,7 +36,7 @@ var language = "en";
 
 /*languange*/
 
-var techURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&from=" + from.toString() + "&to=" + to.toString() + "&sortBy=" + defaultSort + "&language=" + language + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+var techURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&from=" + from.toString() + "&to=" + to.toString() + "&sortBy=" + defaultSort + "&language=" + language + "&apiKey=9ba8e05539c749ba929990a97631997d";
 
 module.exports.getTech =
   function(req, res) {
@@ -94,7 +94,7 @@ module.exports.getTechCustom = function(req, res, preferSort) {
     preferSort = "popularity";
   }
 
-  let customTechURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&sortBy=" + preferSort + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+  let customTechURL = "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&sortBy=" + preferSort + "&apiKey=9ba8e05539c749ba929990a97631997d";
 
   console.log(customTechURL);
   var customHeaderList = [];

@@ -41,14 +41,14 @@ var technologyNewsDescription = [];
 var technologyNewsImages = [];
 
 
-const urlTopNews = "https://newsapi.org/v2/top-headlines?country=us&apiKey=3f28d3b8dce948178d91452c4a02c4a0";
-const urlAnotherNews = "https://newsapi.org/v2/top-headlines?country=us&apiKey=3f28d3b8dce948178d91452c4a02c4a0";
-const urlbasedCategory = "https://newsapi.org/v2/top-headlines?country=us&apiKey=3f28d3b8dce948178d91452c4a02c4a0&category=";
+const urlTopNews = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9ba8e05539c749ba929990a97631997d";
+const urlAnotherNews = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9ba8e05539c749ba929990a97631997d";
+const urlbasedCategory = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9ba8e05539c749ba929990a97631997d&category=";
 
 
 /*top news*/
 module.exports.add =
-  async function(req, res) {
+  function(req, res) {
     https.get(urlTopNews, function(response) {
       let chunks = "";
       response.on('data', function(data) {

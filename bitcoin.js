@@ -36,7 +36,7 @@ var language = "en";
 
 /*languange*/
 
-var bitcoinURL = "https://newsapi.org/v2/everything?q=bitcoin&from=" + today.toString() + "&to=" + today.toString() + "&sortBy=" + defaultSort + "&language=" + language + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+var bitcoinURL = "https://newsapi.org/v2/everything?q=bitcoin&from=" + today.toString() + "&to=" + today.toString() + "&sortBy=" + defaultSort + "&language=" + language + "&apiKey=9ba8e05539c749ba929990a97631997d";
 
 
 module.exports.getBitcoin =
@@ -108,7 +108,7 @@ module.exports.getCustomBitcoin = function(req, res, preferLanguage, preferDateF
     preferSort = "popularity";
   }
 
-  let customBitcoinURL = "https://newsapi.org/v2/everything?q=bitcoin&from=" + preferDateFrom + "&to=" + preferDateto + "&sortBy=" + preferSort + "&language=" + preferLanguage + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+  let customBitcoinURL = "https://newsapi.org/v2/everything?q=bitcoin&from=" + preferDateFrom + "&to=" + preferDateto + "&sortBy=" + preferSort + "&language=" + preferLanguage + "&apiKey=9ba8e05539c749ba929990a97631997d";
   console.log(customBitcoinURL);
   let customHeaderList = [];
   let customDescriptionList = [];

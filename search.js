@@ -10,7 +10,7 @@ var customImagesList = [];
 
 
 module.exports.customSearch = function(req, res, query) {
-  let customURL = "https://newsapi.org/v2/everything?q=" + query + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+  let customURL = "https://newsapi.org/v2/everything?q=" + query + "&apiKey=9ba8e05539c749ba929990a97631997d";
 
 
   https.get(customURL, function(response) {

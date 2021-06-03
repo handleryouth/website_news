@@ -9,7 +9,7 @@ module.exports.getCountry =
   function(req, res) {
 
     let country = "us";
-    let countryURL = "https://newsapi.org/v2/sources?country=" + country + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+    let countryURL = "https://newsapi.org/v2/sources?country=" + country + "&apiKey=9ba8e05539c749ba929990a97631997d";
 
     let sourceHeaderList = [];
     let sourceDescriptionList = [];
@@ -62,7 +62,7 @@ module.exports.getCustomCountry =
     let sourceDescriptionList = [];
     let sourceLinkList = [];
 
-    let countryURL = "https://newsapi.org/v2/sources?country=" + preferCountry + "&apiKey=1c13c715ec12463cbd624e2005e0f66f";
+    let countryURL = "https://newsapi.org/v2/sources?country=" + preferCountry + "&apiKey=9ba8e05539c749ba929990a97631997d";
     console.log(countryURL);
     https.get(countryURL, function(response) {
       console.log(response.statusCode);
